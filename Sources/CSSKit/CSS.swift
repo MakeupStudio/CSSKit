@@ -6,8 +6,6 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-import Documents
-
 //public struct CSS: DocumentFormat {
 //
 ////    public var groups = [Group]()
