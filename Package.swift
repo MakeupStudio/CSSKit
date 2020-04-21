@@ -7,8 +7,10 @@ let package = Package(
         .library(name: "CSSKit", targets: ["CSSKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/MakeupStudio/Palette.git",
-                 from: "2.0.0")
+        .package(
+            url: "https://github.com/MakeupStudio/Palette.git",
+            .upToNextMajor(from: "3.0.1")
+        )
     ],
     targets: [
         .target(

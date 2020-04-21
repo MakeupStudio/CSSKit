@@ -16,6 +16,11 @@ extension Style {
         public var name: String
         public var arguments: [Dimension.Erased]
         
+        public init(name: String, arguments: [Dimension.Erased]) {
+            self.name = name
+            self.arguments = arguments
+        }
+        
         public func render() -> String {
             name.appending("(")
                 .appending(renderArguments())

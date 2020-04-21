@@ -39,7 +39,7 @@ extension CSSDimension {
     }
     
     public var erased: Erased { .init(self) }
-    public func render() -> String { "\(value)\(unit)" }
+    public func render() -> String { "\(value)\(unit.rawValue)" }
 
 }
 

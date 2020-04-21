@@ -21,8 +21,8 @@ extension Dimension {
         public func converted(to unit: Unit) -> Self {
             guard self.unit != unit else { return self }
             switch (self.unit, unit) {
-            case (.s, .ms): return .init(value / 1000, unit)
-            case (.ms, .s): return .init(value * 1000, unit)
+            case (.s, .ms): return .init(value * 1000, unit)
+            case (.ms, .s): return .init(value / 1000, unit)
             default:
                 assertionFailure("Unimplemented convertion, consider converting manually and make a PR")
                 return self

@@ -39,10 +39,11 @@ public extension Font {
         /// Custom value [Not recommended]
         case custom(Int)
         
-        private static var standardCasesStorage: [Int: Self] =
-            [100: .thin,   200: .extraLight, 300: .light,
-             400: .normal, 500: .medium,     600: .semibold,
-             700: .bold,   800: .extraBold,  900: .black]
+        private static var standardCasesStorage: [Int: Self] = [
+            100: .thin,   200: .extraLight, 300: .light,
+            400: .normal, 500: .medium,     600: .semibold,
+            700: .bold,   800: .extraBold,  900: .black
+        ]
         
         public init(integerLiteral value: Int) { self.init(rawValue: value) }
         
@@ -92,4 +93,10 @@ public struct Font {
     public var name: Name
     public var size: Dimension.Length?
     public var weight: Weight?
+    
+    init(name: Name, size: Dimension.Length? = .none, weight: Weight? = .none) {
+        self.name = name
+        self.size = size
+        self.weight = weight
+    }
 }
