@@ -94,6 +94,17 @@ See [GenericColor](https://github.com/MakeupStudio/GenericColor) and [Palette](h
 
 I'm gonna provide a static factory for google fonts later.
 
+### Installation
+
+```swift
+.package(
+    url: "https://github.com/MakeupStudio/CSSKit.git", 
+    .upToNextMajor(from: "1.0.0-alpha.1.0")
+)
+```
+
+
+
 ---
 
 _Hopefully I'll add more typo-free static factories & extend fonts support a bit next week_
