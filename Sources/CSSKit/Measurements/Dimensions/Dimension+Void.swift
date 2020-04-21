@@ -8,9 +8,14 @@
 
 extension Dimension {
     
-    public struct Void: CSSDimension {
+    public struct Void: CSSDimension, ExpressibleByFloatLiteral {
         public var value: Double
         public let unit: Unit = .none
+        
+        public init(floatLiteral value: Double) {
+            self.init(value: value)
+        }
+        
         public init(value: Double, unit: Unit = .none) {
             self.value = value
         }

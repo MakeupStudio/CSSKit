@@ -19,19 +19,32 @@ extension Dimension {
         
         /// Converts time to specified unit
         public func converted(to unit: Unit) -> Self {
+            guard self.unit != unit else { return self }
             switch (self.unit, unit) {
-            case (.hz, .hz), (.kHz, .kHz): return self
             case (.hz, .kHz): return .init(value / 1000, unit)
             case (.kHz, .hz): return .init(value * 1000, unit)
+            default:
+                assertionFailure("Unimplemented convertion, consider converting manually and make a PR")
+                return self
             }
         }
         
-        public enum Unit: String, CaseIterable, CSSUnit {
+        public struct Unit: CSSUnit, ExpressibleByStringLiteral {
+            public var rawValue: String
+            
+            public init(stringLiteral value: String) {
+                self.init(rawValue: value)
+            }
+            
+            public init(rawValue: String) {
+                self.rawValue = rawValue
+            }
+            
             /// Represents a frequency in hertz.
-            case hz
+            public static var hz: Self { "hz" }
             
             /// Represents a frequency in kilohertz.
-            case kHz
+            public static var kHz: Self { "kHz" }
         }
     }
     

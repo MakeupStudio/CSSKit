@@ -12,26 +12,35 @@ extension Style {
         textAlign(value.rawValue)
     }
     
-    public enum TextAlignment: String {
+    public struct TextAlignment: ExpressibleByStringLiteral, RawRepresentable {
+        public var rawValue: String
+        
+        public init(stringLiteral value: String) {
+            self.init(rawValue: value)
+        }
+        
+        public init(rawValue: String) {
+            self.rawValue = rawValue
+        }
         
         /// The inline contents are aligned to the left edge of the line box.
-        case left
+        public static var left: Self { "" }
         
         /// The inline contents are aligned to the right edge of the line box.
-        case right
+        public static var right: Self { "" }
         
         /// The inline contents are centered within the line box.
-        case center
+        public static var center: Self { "" }
         
         /// The inline contents are justified. Text should be spaced to line up its left and
         /// right edges to the left and right edges of the line box, except for the last line.
-        case justify
+        public static var justify: Self { "" }
         
         /// The same as left if direction is left-to-right and right if direction is right-to-left.
-        case start
+        public static var start: Self { "" }
         
         /// The same as right if direction is left-to-right and left if direction is right-to-left.
-        case end
+        public static var end: Self { "" }
     }
     
 }

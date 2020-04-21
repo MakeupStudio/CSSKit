@@ -7,10 +7,10 @@
 //
 
 public enum Dimension {
-    public typealias Erased = ErasedDimension
+    public typealias Erased = ErasedCSSDimension
 }
 
-public protocol CSSDimension: Erasable where Erased == ErasedDimension {
+public protocol CSSDimension: Erasable, Renderable where Erased == ErasedCSSDimension {
     
     associatedtype Unit: CSSUnit
     var value: Double { get }
@@ -38,29 +38,28 @@ extension CSSDimension {
         self.init(value: Double(value), unit: unit)
     }
     
-    public var erased: Erased { .init(value: value, unit: unit.rawValue) }
+    public var erased: Erased { .init(self) }
+    public func render() -> String { "\(value)\(unit)" }
 
 }
 
-public struct ErasedDimension: Renderable {
+public struct ErasedCSSDimension: CSSDimension {
     
     public var value: Double
-    public var unit: String = ""
+    public var unit: ErasedCSSUnit
     
     public init<T: CSSDimension>(_ dimension: T) {
-        self.init(value: dimension.value, unit: dimension.unit.rawValue)
+        self.init(value: dimension.value, unit: dimension.unit.erased)
     }
     
-    public init(value: Double, unit: String) {
+    public init(value: Double, unit: ErasedCSSUnit) {
         self.value = value
         self.unit = unit
     }
     
     public init(_ value: Double) {
-        self.init(value: value, unit: "")
+        self.init(value: value, unit: .void)
     }
-    
-    public func render() -> String { "\(value)\(unit)" }
     
 }
 

@@ -19,19 +19,32 @@ extension Dimension {
         
         /// Converts time to specified unit
         public func converted(to unit: Unit) -> Self {
+            guard self.unit != unit else { return self }
             switch (self.unit, unit) {
-            case (.s, .s), (.ms, .ms): return self
             case (.s, .ms): return .init(value / 1000, unit)
             case (.ms, .s): return .init(value * 1000, unit)
+            default:
+                assertionFailure("Unimplemented convertion, consider converting manually and make a PR")
+                return self
             }
         }
         
-        public enum Unit: String, CSSUnit {
+        public struct Unit: CSSUnit, ExpressibleByStringLiteral {
+            public var rawValue: String
+            
+            public init(stringLiteral value: String) {
+                self.init(rawValue: value)
+            }
+            
+            public init(rawValue: String) {
+                self.rawValue = rawValue
+            }
+            
             /// Represents a time in seconds.
-            case s
+            public static var s: Self { "s" }
             
             /// Represents a time in milliseconds.
-            case ms
+            public static var ms: Self { "ms" }
         }
     }
     
