@@ -6,8 +6,6 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-import MarkupCore
-
 public typealias StylesCollection = [Style]
 
 extension StylesCollection: Renderable {

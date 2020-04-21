@@ -62,7 +62,7 @@
 //
 //extension Selector where Kind == CSS.SelectorKind.Group {
 //
-//    public init<T: ErasableType>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
+//    public init<T: Erasable>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
 //        rawValue = other.reduce(into: first.erased.rawValue + Kind.prefixed(name: second.erased.rawValue)) {
 //            $0 += Kind.prefixed(name: $1.erased.rawValue)
 //        }
@@ -72,7 +72,7 @@
 //
 //extension Selector where Kind == CSS.SelectorKind.Descendant {
 //    
-//    public init<T: ErasableType>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
+//    public init<T: Erasable>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
 //        rawValue = other.reduce(into: first.erased.rawValue + Kind.prefixed(name: second.erased.rawValue)) {
 //            $0 += Kind.prefixed(name: $1.erased.rawValue)
 //        }
@@ -82,7 +82,7 @@
 //
 //extension Selector where Kind == CSS.SelectorKind.Child {
 //    
-//    public init<T: ErasableType>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
+//    public init<T: Erasable>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
 //        rawValue = other.reduce(into: first.erased.rawValue + Kind.prefixed(name: second.erased.rawValue)) {
 //            $0 += Kind.prefixed(name: $1.erased.rawValue)
 //        }
@@ -92,7 +92,7 @@
 //
 //extension Selector where Kind == CSS.SelectorKind.Adjacent {
 //    
-//    public init<T: ErasableType>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
+//    public init<T: Erasable>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
 //        rawValue = other.reduce(into: first.erased.rawValue + Kind.prefixed(name: second.erased.rawValue)) {
 //            $0 += Kind.prefixed(name: $1.erased.rawValue)
 //        }
@@ -102,7 +102,7 @@
 //
 //extension Selector where Kind == CSS.SelectorKind.General {
 //    
-//    public init<T: ErasableType>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
+//    public init<T: Erasable>(_ first: T, _ second: T, _ other: T...) where T.Erased == CSS.ErasedSelector {
 //        rawValue = other.reduce(into: first.erased.rawValue + Kind.prefixed(name: second.erased.rawValue)) {
 //            $0 += Kind.prefixed(name: $1.erased.rawValue)
 //        }

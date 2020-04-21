@@ -6,13 +6,11 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-import MarkupCore
-
 public enum Dimension {
     public typealias Erased = ErasedDimension
 }
 
-public protocol CSSDimension: ErasableType where Erased == ErasedDimension {
+public protocol CSSDimension: Erasable where Erased == ErasedDimension {
     
     associatedtype Unit: CSSUnit
     var value: Double { get }

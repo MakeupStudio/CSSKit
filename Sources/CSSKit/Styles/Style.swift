@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MarkupCore
 
 public struct Style: Renderable {
     public var key: String

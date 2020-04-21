@@ -6,8 +6,6 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-import MarkupCore
-
 extension Font.Weight: Renderable {
     public func render() -> String { .init(rawValue) }
 }

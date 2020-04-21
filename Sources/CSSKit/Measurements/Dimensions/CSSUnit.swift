@@ -6,9 +6,7 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-import MarkupCore
-
-public protocol CSSUnit: RawRepresentable, ErasableType
+public protocol CSSUnit: RawRepresentable, Erasable
 where RawValue == String, Erased == ErasedUnit {}
 
 extension CSSUnit {
