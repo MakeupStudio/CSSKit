@@ -103,7 +103,9 @@ I'm gonna provide a static factory for google fonts later.
 )
 ```
 
+### Integration
 
+You can use `generateIntegration` methods from CSSKit itself by passing needed arguments or use **[this](https://makeupstudio.herokuapp.com/CSSKit)** tool for autogenerating integration code.
 
 ---
 
