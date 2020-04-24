@@ -8,6 +8,48 @@
 
 extension Style {
     
+    // MARK: - Custom overloads
+    
+    public static func alignContent(_ value: AlignContent) -> Self {
+        return alignContent(value.rawValue)
+    }
+    
+    /// The CSS align-items property sets the align-self value on all direct children as a group.
+    ///
+    /// In Flexbox, it controls the alignment of items on the Cross Axis.
+    /// In Grid Layout, it controls the alignment of items on the Block Axis within their grid area.
+    public static func alignItems(_ value: AlignItems) -> Self {
+        return alignSelf(value.rawValue)
+    }
+    
+    /// The align-self CSS property overrides a grid or flex item's align-items value.
+    /// 
+    /// In Grid, it aligns the item inside the grid area.
+    /// In Flexbox, it aligns the item on the cross axis.
+    ///
+    /// Requires `.display` to be `.flex`
+    public static func alignSelf(_ value: AlignSelf) -> Self {
+        return alignSelf(value.rawValue)
+    }
+    
+    public static func textAlign(_ value: TextAlignment) -> Self {
+        return textAlign(value.rawValue)
+    }
+    
+    public static func display(_ value: Display) -> Self {
+        return display(value.rawValue)
+    }
+    
+    public static func position(_ value: Position) -> Self {
+        return position(value.rawValue)
+    }
+    
+    public static func transform(_ function: TransformFunction?) -> Self {
+        return transform(function?.render() ?? "none")
+    }
+    
+    // MARK: - Basic overloads
+    
     public static func alignContent(_ value: String) -> Self {
         return .init(key: "align-content", value: value)
     }

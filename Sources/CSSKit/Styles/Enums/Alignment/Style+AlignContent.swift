@@ -10,10 +10,6 @@ import Foundation
 
 extension Style {
     
-    public static func alignContent(_ value: AlignContent) -> Self {
-        alignContent(value.rawValue)
-    }
-    
     /// The CSS align-content property sets the distribution of space between
     /// and around content items along a flexbox's cross-axis or a grid's block axis.
     public struct AlignContent: ExpressibleByStringLiteral, RawRepresentable {

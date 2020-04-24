@@ -8,15 +8,6 @@
 
 extension Style {
     
-    /// The align-self CSS property overrides a grid or flex item's align-items value.
-    /// In Grid, it aligns the item inside the grid area.
-    /// In Flexbox, it aligns the item on the cross axis.
-    ///
-    /// Requires `.display` to be `.flex`
-    public static func alignSelf(_ value: AlignSelf) -> Self {
-        alignSelf(value.rawValue)
-    }
-    
     public struct AlignSelf: ExpressibleByStringLiteral, RawRepresentable {
         public var rawValue: String
         

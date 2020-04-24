@@ -8,10 +8,6 @@
 
 extension Style {
     
-    public static func display(_ value: Display) -> Self {
-        display(value.rawValue)
-    }
-    
     /// The display CSS property sets whether an element is treated as a block or inline element
     /// and the layout used for its children, such as flow layout, grid or flex.
     ///

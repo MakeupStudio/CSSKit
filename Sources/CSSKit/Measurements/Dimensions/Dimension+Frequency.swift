@@ -49,3 +49,13 @@ extension Dimension {
     }
     
 }
+
+extension Dimension.Frequency {
+    
+    /// Represents a frequency in hertz.
+    public static func hz(_ value: Double) -> Self { .init(value, .hz) }
+    
+    /// Represents a frequency in kilohertz.
+    public static func kHz(_ value: Double) -> Self { .init(value, .kHz) }
+    
+}

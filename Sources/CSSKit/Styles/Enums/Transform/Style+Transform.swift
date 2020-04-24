@@ -8,10 +8,6 @@
 
 extension Style {
     
-    public static func transform(_ function: TransformFunction?) -> Self {
-        transform(function?.render() ?? "none")
-    }
-    
     public struct TransformFunction: Renderable {
         public var name: String
         public var arguments: [Dimension.Erased]

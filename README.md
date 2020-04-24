@@ -64,6 +64,9 @@ Dimensions are present but not integrated in styles factory, so u can render the
 Style.margin(10.in.pt.render())
 // the same as
 Style.margin(Dimension.Length(value: 10, unit: .pt).render())
+// or
+Style.margin(Dimension.Length.pt(10)).render())
+//  Need for `render()` call will be removed in beta releases (It's currently alpha)
 ```
 
 Also you can convert some dimensions or replace units
@@ -88,11 +91,11 @@ Corneres & Edges are supported too
 
 ### Colors
 
-See [GenericColor](https://github.com/MakeupStudio/GenericColor) and [Palette](https://github.com/MakeupStudio/Palette) for more
+See [GenericColor](https://github.com/MakeupStudio/GenericColor) and [Palette](https://github.com/MakeupStudio/Palette) for more.
 
 ### Fonts
 
-I'm gonna provide a static factory for google fonts later.
+I'm gonna provide a static factory for google fonts later, and Font type behaviour may change.
 
 ### Installation
 
@@ -106,6 +109,44 @@ I'm gonna provide a static factory for google fonts later.
 ### Integration
 
 You can use `generateIntegration` methods from CSSKit itself by passing needed arguments or use **[this](https://makeupstudio.herokuapp.com/CSSKit)** tool for autogenerating integration code.
+
+So it will generate all the needed fields for your container type, for example for HTML type it will look like
+
+```swift
+// MARK: - Implementation
+
+extension HTML {
+
+    internal func appendingStyle(_ style: Style) -> Self {
+        <#Implementation#>
+    }
+
+}
+
+// MARK: - Generated
+
+extension HTML {
+    
+    public func alignContent(_ value: String) -> Self {
+        appendingStyle(.alignContent(value))
+    }
+
+    public func alignItems(_ value: String) -> Self {
+        appendingStyle(.alignItems(value))
+    }
+  
+  	// ...
+  
+}
+```
+
+And you'll be able to use chaining like this
+
+```swift
+someHTMLInstance
+    .display(.flex)
+    .transform(.rotate(x: .deg(30)))
+```
 
 ---
 

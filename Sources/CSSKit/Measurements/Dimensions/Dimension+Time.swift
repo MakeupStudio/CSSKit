@@ -49,3 +49,13 @@ extension Dimension {
     }
     
 }
+
+extension Dimension.Time {
+    
+    /// Represents a time in seconds.
+    public static func s(_ value: Double) -> Self { .init(value, .s) }
+    
+    /// Represents a time in milliseconds.
+    public static func ms(_ value: Double) -> Self { .init(value, .ms) }
+    
+}

@@ -8,10 +8,6 @@
 
 extension Style {
     
-    public static func textAlign(_ value: TextAlignment) -> Self {
-        textAlign(value.rawValue)
-    }
-    
     public struct TextAlignment: ExpressibleByStringLiteral, RawRepresentable {
         public var rawValue: String
         
