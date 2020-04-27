@@ -1,3 +1,4 @@
+//generationmark:ignore
 //
 //  Style+StaticFactory.swift
 //  CSS
@@ -6,12 +7,123 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
+//generationmark:ignore
+/*
+public protocol TYPE {}
+extension TYPE {
+    internal func BUILDER(_ style: Style) -> Self { self }
+}
+
+//generationmark:predefined
+extension TYPE {
+    public func padding(_ edges: Edge.Set, _ value: Dimension.Length = .pt(16)) -> Self {
+        var result = self
+        if edges.contains(.top) { result = result.BUILDER(.paddingTop(value.render())) }
+        if edges.contains(.bottom) { result = result.BUILDER(.paddingBottom(value.render())) }
+        if edges.contains(.leading) { result = result.BUILDER(.paddingLeft(value.render())) }
+        if edges.contains(.trailing) { result = result.BUILDER(.paddingRight(value.render())) }
+        return result
+    }
+    
+    public func margin(_ edges: Edge.Set = .all, _ value: Dimension.Length = .pt(16)) -> Self {
+        var result = self
+        if edges.contains(.top) { result = result.BUILDER(.marginTop(value.render())) }
+        if edges.contains(.bottom) { result = result.BUILDER(.marginBottom(value.render())) }
+        if edges.contains(.leading) { result = result.BUILDER(.marginLeft(value.render())) }
+        if edges.contains(.trailing) { result = result.BUILDER(.marginRight(value.render())) }
+        return result
+    }
+    
+    public func cornerRadius(_ corners: Corner.Set = .all, _ radius: Dimension.Length = .pt(12)) -> Self {
+        var result = self
+        if corners.contains(.topLeft) { result = result.BUILDER(.borderTopLeftRadius(radius.render())) }
+        if corners.contains(.topRight) { result = result.BUILDER(.borderTopRightRadius(radius.render())) }
+        if corners.contains(.bottomLeft) { result = result.BUILDER(.borderBottomLeftRadius(radius.render())) }
+        if corners.contains(.bottomRight) { result = result.BUILDER(.borderBottomRightRadius(radius.render())) }
+        return result
+    }
+    
+    public func cornerRadius(_ corner: Corner, x radiusX: Dimension.Length, y radiusY: Dimension.Length) -> Self {
+        func value(_ x: Dimension.Length, _ y: Dimension.Length) -> String {
+            "\(radiusX.render()) /\(radiusY.render())"
+        }
+        switch corner {
+        case .topLeft: return BUILDER(.borderTopLeftRadius(value(radiusX, radiusX)))
+        case .topRight: return BUILDER(.borderTopRightRadius(value(radiusX, radiusX)))
+        case .bottomLeft: return BUILDER(.borderBottomLeftRadius(value(radiusX, radiusX)))
+        case .bottomRight: return BUILDER(.borderBottomRightRadius(value(radiusX, radiusX)))
+        }
+    }
+
+ 
+     public static func frame(width w: Dimension.Length? = nil, height h: Dimension.Length? = nil) -> Self {
+         var result = self
+         if let w = w { result = result.width(w) }
+         if let h = h { result = result.height(h) }
+         return result
+     }
+}
+//generationmark:ignore
+*/
+
+//generationmark:basic
 extension Style {
     
-    // MARK: - Custom overloads
+    // MARK: - Custom overloads mixed
+    
+    public static func foreground(color: Color) -> Self {
+        return Self.color(color.renderRGBA())
+    }
+    
+    public static func background(color: Color) -> Self {
+        return Self.backgroundColor(color.renderRGBA())
+    }
+    
+    public static func fontWeight(_ weight: Font.Weight) -> Self {
+        return Self.fontWeight(weight.render())
+    }
+    
+    public static func fontSize(_ size: Dimension.Length) -> Self {
+        return Self.fontSize(size.render())
+    }
+    
+    public static func width(_ value: Dimension.Length) -> Self {
+        return Self.width(value.render())
+    }
+    
+    public func height(_ value: Dimension.Length) -> Self {
+        return Self.height(value.render())
+    }
+    
+    public static func top(_ value: Dimension.Length) -> Self {
+        return Self.top(value.render())
+    }
+    
+    public static func left(_ value: Dimension.Length) -> Self {
+        return Self.left(value.render())
+    }
+    
+    public static func bottom(_ value: Dimension.Length) -> Self {
+        return Self.bottom(value.render())
+    }
+    
+    public static func right(_ value: Dimension.Length) -> Self {
+        return Self.right(value.render())
+    }
+    
+    public static func padding(_ value: Dimension.Length = .pt(16)) -> Self {
+        return Self.padding(value.render())
+    }
+    
+}
+
+//generationmark:basic
+extension Style {
+    
+    // MARK: - Custom overloads sorted
     
     public static func alignContent(_ value: AlignContent) -> Self {
-        return alignContent(value.rawValue)
+        return Self.alignContent(value.rawValue)
     }
     
     /// The CSS align-items property sets the align-self value on all direct children as a group.
@@ -19,7 +131,7 @@ extension Style {
     /// In Flexbox, it controls the alignment of items on the Cross Axis.
     /// In Grid Layout, it controls the alignment of items on the Block Axis within their grid area.
     public static func alignItems(_ value: AlignItems) -> Self {
-        return alignSelf(value.rawValue)
+        return Self.alignSelf(value.rawValue)
     }
     
     /// The align-self CSS property overrides a grid or flex item's align-items value.
@@ -29,23 +141,23 @@ extension Style {
     ///
     /// Requires `.display` to be `.flex`
     public static func alignSelf(_ value: AlignSelf) -> Self {
-        return alignSelf(value.rawValue)
+        return Self.alignSelf(value.render())
     }
     
     public static func textAlign(_ value: TextAlignment) -> Self {
-        return textAlign(value.rawValue)
+        return Self.textAlign(value.render())
     }
     
     public static func display(_ value: Display) -> Self {
-        return display(value.rawValue)
+        return Self.display(value.render())
     }
     
     public static func position(_ value: Position) -> Self {
-        return position(value.rawValue)
+        return Self.position(value.render())
     }
     
     public static func transform(_ function: TransformFunction?) -> Self {
-        return transform(function?.render() ?? "none")
+        return Self.transform(function?.render() ?? "none")
     }
     
     // MARK: - Basic overloads

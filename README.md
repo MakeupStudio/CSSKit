@@ -93,9 +93,20 @@ Corneres & Edges are supported too
 
 See [GenericColor](https://github.com/MakeupStudio/GenericColor) and [Palette](https://github.com/MakeupStudio/Palette) for more.
 
+```swift
+Style.background(color: .livingCoral)
+Style.foreground(color: .hex("ffffff")!)
+```
+
 ### Fonts
 
 I'm gonna provide a static factory for google fonts later, and Font type behaviour may change.
+
+```swift
+Style.fontFamily("arial")
+Style.fontSize(.pt(10))
+Style.fontWeight(.bold)
+```
 
 ### Installation
 

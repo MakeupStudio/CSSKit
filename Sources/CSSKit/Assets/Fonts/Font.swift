@@ -11,7 +11,7 @@ extension Font.Weight: Renderable {
 }
 
 extension Font.Name: Renderable {
-    public func render() -> String { stringValue }
+    public func render() -> String { rawValue }
 }
 
 public extension Font {
@@ -75,15 +75,19 @@ public extension Font {
         
     }
     
-    struct Name: ExpressibleByStringLiteral {
-        public var stringValue: String
+    struct Name: ExpressibleByStringLiteral, RawRepresentable {
+        public var rawValue: String
         
         public init(stringLiteral value: String) {
             self.init(value)
         }
         
         public init(_ name: String) {
-            self.stringValue = name
+            self.init(rawValue: name)
+        }
+        
+        public init(rawValue: String) {
+            self.rawValue = rawValue
         }
     }
     

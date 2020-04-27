@@ -16,8 +16,9 @@ extension Style {
     /// Some values of display are fully defined in their own individual specifications;
     /// for example the detail of what happens when display: flex is declared is defined in the CSS Flexible Box Model specification.
     /// See the table at the end of this document for all of the individual specifications.
-    public struct Display: ExpressibleByStringLiteral, RawRepresentable {
+    public struct Display: ExpressibleByStringLiteral, RawRepresentable, Renderable {
         public var rawValue: String
+        public func render() -> String { rawValue }
         
         public init(stringLiteral value: String) {
             self.init(rawValue: value)

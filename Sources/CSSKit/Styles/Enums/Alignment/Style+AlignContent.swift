@@ -12,8 +12,9 @@ extension Style {
     
     /// The CSS align-content property sets the distribution of space between
     /// and around content items along a flexbox's cross-axis or a grid's block axis.
-    public struct AlignContent: ExpressibleByStringLiteral, RawRepresentable {
+    public struct AlignContent: ExpressibleByStringLiteral, RawRepresentable, Renderable {
         public var rawValue: String
+        public func render() -> String { rawValue }
         
         public init(stringLiteral value: String) {
             self.init(rawValue: value)

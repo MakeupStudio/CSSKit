@@ -8,8 +8,9 @@
 
 extension Style {
     
-    public struct AlignSelf: ExpressibleByStringLiteral, RawRepresentable {
+    public struct AlignSelf: ExpressibleByStringLiteral, RawRepresentable, Renderable {
         public var rawValue: String
+        public func render() -> String { rawValue }
         
         public init(stringLiteral value: String) {
             self.init(rawValue: value)
