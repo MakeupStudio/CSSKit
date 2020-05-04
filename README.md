@@ -1,8 +1,10 @@
-> Draft readme
-
-# CSSKit
+<p align="center">
+  <img src="Assets/CSSKit-Logo-Pink.png" width=100%/>
+</p>
 
 CSS DSL written in Swift.
+
+> Draft readme
 
 ### Styles support
 
