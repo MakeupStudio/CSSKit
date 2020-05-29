@@ -6,10 +6,13 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-//public struct Group: Renderable {
-//    public var selector: ErasedSelector
+//struct AtRuleGroup {
+//    var rule: NestingAtRule
+//    var nestedGroups: [StyleGroup]
+//}
+
+//public struct StyleGroup: Cus {
+//    public var selector: AnySelector
 //    public var styles = StylesCollection()
-//    public func render() -> String {
-//
-//    }
+//    public func render() -> String {}
 //}
