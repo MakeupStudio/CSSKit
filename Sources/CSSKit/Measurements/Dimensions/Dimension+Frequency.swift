@@ -30,13 +30,13 @@ extension Dimension {
         }
         
         public struct Unit: CSSUnit, ExpressibleByStringLiteral {
-            public var rawValue: String
+            public var rawValue: RawUnit
             
             public init(stringLiteral value: String) {
-                self.init(rawValue: value)
+                self.init(rawValue: .init(stringLiteral: value))
             }
             
-            public init(rawValue: String) {
+            public init(rawValue: RawUnit) {
                 self.rawValue = rawValue
             }
             

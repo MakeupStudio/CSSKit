@@ -10,9 +10,9 @@ extension Style {
     
     public struct TransformFunction: Renderable {
         public var name: String
-        public var arguments: [Dimension.Erased]
+        public var arguments: [AnyDimension]
         
-        public init(name: String, arguments: [Dimension.Erased]) {
+        public init(name: String, arguments: [AnyDimension]) {
             self.name = name
             self.arguments = arguments
         }
@@ -31,6 +31,8 @@ extension Style {
 }
 
 extension Style.TransformFunction {
+    
+    private static func erased<T: CSSDimension>(_ values: T...) -> [AnyDimension] { values.map(AnyDimension.init) }
     
     public static func affine(
         m11: Dimension.Void, m12: Dimension.Void,
@@ -51,11 +53,7 @@ extension Style.TransformFunction {
     ) -> Self {
         Style.TransformFunction(
             name: "matrix",
-            arguments: [
-                m11.erased, m12.erased,
-                m21.erased,m22.erased,
-                tX.erased, tY.erased
-            ]
+            arguments: erased(m11, m12, m21, m22, tX, tY)
         )
     }
     
@@ -67,111 +65,98 @@ extension Style.TransformFunction {
     ) -> Self {
         Style.TransformFunction(
             name: "matrix3d",
-            arguments: [
-                m11.erased, m12.erased, m13.erased, m14.erased,
-                m21.erased, m22.erased, m23.erased, m24.erased,
-                m31.erased, m32.erased, m33.erased, m34.erased,
-                m41.erased, m42.erased, m43.erased, m44.erased
-            ]
+            arguments: erased(
+                m11, m12, m13, m14,
+                m21, m22, m23, m24,
+                m31, m32, m33, m34,
+                m41, m42, m43, m44
+            )
         )
     }
     
     public static func perspective(_ value: Dimension.Void) -> Self {
-        Style.TransformFunction(name: "perspective", arguments: [value.erased])
+        Style.TransformFunction(name: "perspective", arguments: erased(value))
     }
     
     public static func rotate(_ angle: Dimension.Angle) -> Self {
-        Style.TransformFunction(name: "rotate", arguments: [angle.erased])
+        Style.TransformFunction(name: "rotate", arguments: erased(angle))
     }
     
     public static func rotate(x: Dimension.Void, y: Dimension.Void, z: Dimension.Void, angle: Dimension.Angle) -> Self {
         Style.TransformFunction(
             name: "rotate3d",
-            arguments: [
-                x.erased,
-                y.erased,
-                z.erased,
-                angle.erased
-            ]
+            arguments: erased(x, y, z) + [angle.eraseToAnyDimension()]
         )
     }
     
     public static func rotate(x: Dimension.Angle) -> Self {
-        Style.TransformFunction(name: "rotateX", arguments: [x.erased])
+        Style.TransformFunction(name: "rotateX", arguments: erased(x))
     }
     
     public static func rotate(y: Dimension.Angle) -> Self {
-        Style.TransformFunction(name: "rotateY", arguments: [y.erased])
+        Style.TransformFunction(name: "rotateY", arguments: erased(y))
     }
     
     public static func rotate(z: Dimension.Angle) -> Self {
-        Style.TransformFunction(name: "rotateZ", arguments: [z.erased])
+        Style.TransformFunction(name: "rotateZ", arguments: erased(z))
     }
     
     public static func translate(x: Dimension.Length, y: Dimension.Length) -> Self {
-        Style.TransformFunction(name: "translate", arguments: [x.erased, y.erased])
+        Style.TransformFunction(name: "translate", arguments: erased(x, y))
     }
     
     public static func translate3d(x: Dimension.Length, y: Dimension.Length, z: Dimension.Length) -> Self {
         Style.TransformFunction(
             name: "translate3d",
-            arguments: [
-                x.erased,
-                y.erased,
-                z.erased
-            ]
+            arguments: erased(x, y, z)
         )
     }
     
     public static func translate(x: Dimension.Length) -> Self {
-        Style.TransformFunction(name: "translateX", arguments: [x.erased])
+        Style.TransformFunction(name: "translateX", arguments: erased(x))
     }
     
     public static func translate(y: Dimension.Length) -> Self {
-        Style.TransformFunction(name: "translateY", arguments: [y.erased])
+        Style.TransformFunction(name: "translateY", arguments: erased(y))
     }
 
     public static func translate(z: Dimension.Length) -> Self {
-        Style.TransformFunction(name: "translateZ", arguments: [z.erased])
+        Style.TransformFunction(name: "translateZ", arguments: erased(z))
     }
     
     public static func scale(x: Dimension.Length, y: Dimension.Length) -> Self {
-        Style.TransformFunction(name: "scale", arguments: [x.erased, y.erased])
+        Style.TransformFunction(name: "scale", arguments: erased(x, y))
     }
     
     public static func scale(x: Dimension.Length, y: Dimension.Length, z: Dimension.Length) -> Self {
         Style.TransformFunction(
             name: "scale3d",
-            arguments: [
-                x.erased,
-                y.erased,
-                z.erased
-            ]
+            arguments: erased(x, y, z)
         )
     }
 
     public static func scale(x: Dimension.Length) -> Self {
-        .init(name: "scaleX", arguments: [x.erased])
+        .init(name: "scaleX", arguments: erased(x))
     }
     
     public static func scale(y: Dimension.Length) -> Self {
-        .init(name: "scaleY", arguments: [y.erased])
+        .init(name: "scaleY", arguments: erased(y))
     }
     
     public static func scale(z: Dimension.Length) -> Self {
-        .init(name: "scaleZ", arguments: [z.erased])
+        .init(name: "scaleZ", arguments: erased(z))
     }
 
     public static func skew(x: Dimension.Angle, y: Dimension.Angle) -> Self {
-        .init(name: "skew", arguments: [x.erased, y.erased])
+        .init(name: "skew", arguments: erased(x, y))
     }
     
     public static func skew(x: Dimension.Angle) -> Self {
-        .init(name: "skewX", arguments: [x.erased])
+        .init(name: "skewX", arguments: erased(x))
     }
     
     public static func skew(y: Dimension.Angle) -> Self {
-        .init(name: "skewY", arguments: [y.erased])
+        .init(name: "skewY", arguments: erased(y))
     }
     
 }

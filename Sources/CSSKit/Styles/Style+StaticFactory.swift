@@ -9,10 +9,15 @@
 
 //generationmark:ignore
 /*
+ 
+// Generated implementation pattern {
+ 
 public protocol TYPE {}
 extension TYPE {
     internal func BUILDER(_ style: Style) -> Self { self }
 }
+ 
+// }
 
 //generationmark:predefined
 extension TYPE {
@@ -63,6 +68,7 @@ extension TYPE {
          return result
      }
 }
+ 
 //generationmark:ignore
 */
 
@@ -159,6 +165,14 @@ extension Style {
     public static func transform(_ function: TransformFunction?) -> Self {
         return Self.transform(function?.render() ?? "none")
     }
+}
+
+//generationmark:ignore
+
+/* Basic overloads are generated from parsed MDN docs */
+
+//generationmark:basic
+extension Style {
     
     // MARK: - Basic overloads
     

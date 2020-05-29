@@ -6,30 +6,56 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-public protocol CSSUnit: RawRepresentable, Erasable, Equatable
-where RawValue == String, Erased == ErasedCSSUnit {}
+public protocol CSSUnit: Renderable, Equatable, RawRepresentable
+where RawValue == RawUnit {}
 
 extension CSSUnit {
-    public var erased: Erased { .init(rawValue: rawValue) }
     public static func ==(lhs: Self, rhs: Self) -> Bool {
-        lhs.rawValue == rhs.rawValue
+        lhs.render() == rhs.render()
     }
+    
+    public func render() -> String { rawValue.render() }
+    
+    public func eraseToAnyUnit() -> AnyUnit { .init(self) }
 }
 
-public struct ErasedCSSUnit: CSSUnit, ExpressibleByStringLiteral {
+public struct RawUnit: CSSUnit, ExpressibleByStringLiteral {
+    private var _rawValue: String
     
-    public var rawValue: String
+    public init(rawValue: RawUnit) {
+        self = rawValue
+    }
     
     public init(stringLiteral value: String) {
-        self.init(rawValue: value)
+        self.init(value)
     }
     
-    public init(rawValue: String) {
-        self.rawValue = rawValue
+    public init(_ value: String) {
+        self._rawValue = value
     }
     
-    public var erased: Self { self }
+    public func render() -> String { _rawValue }
+    
+    public var erased: AnyUnit { .init(self) }
+    
+    public var rawValue: Self { self }
     
     public static var void: Self { "" }
     
+}
+
+public struct AnyUnit: CSSUnit {
+    private var _render: () -> String
+    
+    public init(rawValue: RawUnit) {
+        self.init(rawValue)
+    }
+    
+    public init<T: CSSUnit>(_ unit: T) {
+        self._render = unit.render
+    }
+    
+    public var rawValue: RawUnit { .init(render()) }
+    
+    public func render() -> String { _render() }
 }

@@ -20,8 +20,15 @@ extension Dimension {
             self.value = value
         }
         
-        public enum Unit: String, CSSUnit {
-            case none = ""
+        public enum Unit: CSSUnit {
+            case none
+            
+            public init?(rawValue: RawUnit) {
+                guard rawValue.render().isEmpty else { return nil }
+                self = .none
+            }
+            
+            public var rawValue: RawUnit { "" }
         }
     }
     
