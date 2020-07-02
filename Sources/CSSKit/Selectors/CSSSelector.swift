@@ -6,7 +6,7 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-public enum Selector {}
+public enum Selectors {}
 
 public protocol CSSSelector: Renderable, RawRepresentable where RawValue == RawSelector {}
 
