@@ -1,18 +1,18 @@
 //
-//  Dimension+Time.swift
+//  Dimension+Frequency.swift
 //  CSS
 //
 //  Created by Maxim Krouk on 9/1/19.
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-extension Dimension {
+extension Dimensions {
     
-    public struct Time: CSSDimension {
+    public struct Frequency: CSSDimension {
         public var value: Double
-        public let unit: Unit
+        public var unit: Unit
         
-        public init(value: Double, unit: Unit = .s) {
+        public init(value: Double, unit: Unit = .hz) {
             self.value = value
             self.unit = unit
         }
@@ -21,8 +21,8 @@ extension Dimension {
         public func converted(to unit: Unit) -> Self {
             guard self.unit != unit else { return self }
             switch (self.unit, unit) {
-            case (.s, .ms): return .init(value * 1000, unit)
-            case (.ms, .s): return .init(value / 1000, unit)
+            case (.hz, .kHz): return .init(value / 1000, unit)
+            case (.kHz, .hz): return .init(value * 1000, unit)
             default:
                 assertionFailure("Unimplemented convertion, consider converting manually and make a PR")
                 return self
@@ -40,22 +40,22 @@ extension Dimension {
                 self.rawValue = rawValue
             }
             
-            /// Represents a time in seconds.
-            public static var s: Self { "s" }
+            /// Represents a frequency in hertz.
+            public static var hz: Self { "hz" }
             
-            /// Represents a time in milliseconds.
-            public static var ms: Self { "ms" }
+            /// Represents a frequency in kilohertz.
+            public static var kHz: Self { "kHz" }
         }
     }
     
 }
 
-extension Dimension.Time {
+extension Dimensions.Frequency {
     
-    /// Represents a time in seconds.
-    public static func s(_ value: Double) -> Self { .init(value, .s) }
+    /// Represents a frequency in hertz.
+    public static func hz(_ value: Double) -> Self { .init(value, .hz) }
     
-    /// Represents a time in milliseconds.
-    public static func ms(_ value: Double) -> Self { .init(value, .ms) }
+    /// Represents a frequency in kilohertz.
+    public static func kHz(_ value: Double) -> Self { .init(value, .kHz) }
     
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-extension Dimension {
+extension Dimensions {
     
     public struct Length: CSSDimension, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
         public var value: Double
@@ -100,7 +100,7 @@ extension Dimension {
     
 }
 
-extension Dimension.Length {
+extension Dimensions.Length {
     
     /// Centimeters
     public static func cm(_ value: Double) -> Self { .init(value, .cm) }

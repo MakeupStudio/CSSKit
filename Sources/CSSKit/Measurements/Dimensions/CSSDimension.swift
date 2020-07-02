@@ -6,7 +6,7 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-public enum Dimension {}
+public enum Dimensions {}
 
 public protocol CSSDimension: Renderable, RawRepresentable where RawValue == RawDimension {
     associatedtype Unit: CSSUnit

@@ -8,24 +8,24 @@
 
 extension Double {
     
-    public var `in`: Dimension.Provider { .init(value: self) }
+    public var `in`: Dimensions.Provider { .init(value: self) }
     
-    public static postfix func %(_ lhs: Self) -> Dimension.Length { .init(lhs, .percent) }
+    public static postfix func %(_ lhs: Self) -> Dimensions.Length { .init(lhs, .percent) }
     
 }
 
 extension Int {
     
-    public var `in`: Dimension.Provider { .init(value: Double(self)) }
+    public var `in`: Dimensions.Provider { .init(value: Double(self)) }
     
-    public static postfix func %(_ lhs: Self) -> Dimension.Length { .init(lhs, .percent) }
+    public static postfix func %(_ lhs: Self) -> Dimensions.Length { .init(lhs, .percent) }
     
 }
 
 extension Float {
     
-    public var `in`: Dimension.Provider { .init(value: Double(self)) }
+    public var `in`: Dimensions.Provider { .init(value: Double(self)) }
     
-    public static postfix func %(_ lhs: Self) -> Dimension.Length { .init(lhs, .percent) }
+    public static postfix func %(_ lhs: Self) -> Dimensions.Length { .init(lhs, .percent) }
     
 }

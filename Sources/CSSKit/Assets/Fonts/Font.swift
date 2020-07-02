@@ -95,10 +95,10 @@ public extension Font {
 
 public struct Font {
     public var name: Name
-    public var size: Dimension.Length?
+    public var size: Dimensions.Length?
     public var weight: Weight?
     
-    init(name: Name, size: Dimension.Length? = .none, weight: Weight? = .none) {
+    init(name: Name, size: Dimensions.Length? = .none, weight: Weight? = .none) {
         self.name = name
         self.size = size
         self.weight = weight

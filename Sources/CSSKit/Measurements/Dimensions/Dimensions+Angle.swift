@@ -6,7 +6,7 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-extension Dimension {
+extension Dimensions {
     
     public struct Angle: CSSDimension {
         public var value: Double
@@ -56,7 +56,7 @@ extension Dimension {
     
 }
 
-extension Dimension.Angle {
+extension Dimensions.Angle {
     
     /// Represents an angle in degrees.
     ///

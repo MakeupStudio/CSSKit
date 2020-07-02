@@ -6,7 +6,7 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-extension Dimension {
+extension Dimensions {
     
     public struct Void: CSSDimension, ExpressibleByFloatLiteral {
         public var value: Double

@@ -89,35 +89,35 @@ extension Style {
         return Self.fontWeight(weight.render())
     }
     
-    public static func fontSize(_ size: Dimension.Length) -> Self {
+    public static func fontSize(_ size: Dimensions.Length) -> Self {
         return Self.fontSize(size.render())
     }
     
-    public static func width(_ value: Dimension.Length) -> Self {
+    public static func width(_ value: Dimensions.Length) -> Self {
         return Self.width(value.render())
     }
     
-    public func height(_ value: Dimension.Length) -> Self {
+    public func height(_ value: Dimensions.Length) -> Self {
         return Self.height(value.render())
     }
     
-    public static func top(_ value: Dimension.Length) -> Self {
+    public static func top(_ value: Dimensions.Length) -> Self {
         return Self.top(value.render())
     }
     
-    public static func left(_ value: Dimension.Length) -> Self {
+    public static func left(_ value: Dimensions.Length) -> Self {
         return Self.left(value.render())
     }
     
-    public static func bottom(_ value: Dimension.Length) -> Self {
+    public static func bottom(_ value: Dimensions.Length) -> Self {
         return Self.bottom(value.render())
     }
     
-    public static func right(_ value: Dimension.Length) -> Self {
+    public static func right(_ value: Dimensions.Length) -> Self {
         return Self.right(value.render())
     }
     
-    public static func padding(_ value: Dimension.Length = .pt(16)) -> Self {
+    public static func padding(_ value: Dimensions.Length = .pt(16)) -> Self {
         return Self.padding(value.render())
     }
     
