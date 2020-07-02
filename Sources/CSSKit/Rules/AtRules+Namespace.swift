@@ -5,14 +5,14 @@
 //  Created by Maxim Krouk on 5/29/20.
 //
 
-extension AtRule {
+extension AtRules {
     public struct Namespace: CSSAtRule {
         static private var prefix: String { "@namespace" }
         public var label: Label
         public var target: Target
         
         public init?(rawValue: RawAtRule) {
-            let string = rawValue.render()
+            let string = rawValue.render().trimmingCharacters(in: .whitespacesAndNewlines)
             guard string.hasPrefix(Self.prefix) else { return nil }
             let noPrefix = string.components(separatedBy: .whitespaces).dropFirst()
             
@@ -46,7 +46,7 @@ extension AtRule {
     }
 }
 
-extension AtRule.Namespace {
+extension AtRules.Namespace {
     public struct Label: RawRepresentable, ExpressibleByStringLiteral {
         private(set) public var rawValue: String
         

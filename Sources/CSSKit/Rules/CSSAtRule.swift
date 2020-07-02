@@ -6,7 +6,7 @@
 //  Copyright © 2019 MakeupStudio. All rights reserved.
 //
 
-public enum AtRule {}
+public enum AtRules {}
 
 public protocol CSSAtRule: Renderable, RawRepresentable where RawValue == RawAtRule {}
 
