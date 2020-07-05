@@ -16,20 +16,20 @@ extension Color: Renderable {
     
     public func renderRGBA() -> String {
         "rgba("
-            .appending("\(red.floatByteValue),")
-            .appending("\(green.floatByteValue),")
-            .appending("\(blue.floatByteValue),")
-            .appending("\(alpha.floatValue)")
+            .appending("\(red.byteValue),")
+            .appending("\(green.byteValue),")
+            .appending("\(blue.byteValue),")
+            .appending("\(alpha.byteValue)")
             .appending(")")
     }
     
     public func renderHSLA() -> String {
         let hsb = self.hsb
         return "hsla("
-            .appending("\(hsb.hue.floatByteValue),")
-            .appending("\(hsb.saturation.floatByteValue),")
-            .appending("\(hsb.brightness.floatByteValue),")
-            .appending("\(alpha.floatValue)")
+            .appending("\(hsb.hue.byteValue),")
+            .appending("\(hsb.saturation.byteValue),")
+            .appending("\(hsb.brightness.byteValue),")
+            .appending("\(alpha.byteValue)")
             .appending(")")
     }
 }
