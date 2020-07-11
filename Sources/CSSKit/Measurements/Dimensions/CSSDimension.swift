@@ -65,7 +65,7 @@ public struct RawDimension: CSSDimension {
     
     public var rawValue: RawDimension { self }
     
-    public func render() -> String { "\(value)\(unit.rawValue)" }
+    public func render() -> String { "\(value)\(unit.rawValue.render())" }
     
 }
 
