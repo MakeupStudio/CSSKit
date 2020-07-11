@@ -10,7 +10,7 @@ final class CSSKitTests: XCTestCase {
     func testRendering() {
         let styles: StylesCollection = [
             .alignSelf(.center),
-            .background(Color.brown.hex(uppercase: true, hashTagPrefix: true)),
+            .background(Color.web(.brown).hex(uppercase: true, hashTagPrefix: true)),
             .borderRadius(1.in.px.render())
         ]
         let expectation = "align-self:center;background:#A52A2AFF;border-radius:1.0px;"

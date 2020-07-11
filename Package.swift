@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
@@ -9,15 +9,21 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/MakeupStudio/Palette.git",
-            .upToNextMajor(from: "3.0.1")
+            from: "4.0.0-beta.3.0"
         )
     ],
     targets: [
         .target(
             name: "CSSKit",
-            dependencies: ["Palette"]),
+            dependencies: [
+                .product(name: "Palette", package: "Palette")
+            ]
+        ),
         .testTarget(
             name: "CSSKitTests",
-            dependencies: ["CSSKit"]),
+            dependencies: [
+                .target(name: "CSSKit")
+            ]
+        ),
     ]
 )
